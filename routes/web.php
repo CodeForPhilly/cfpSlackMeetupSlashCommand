@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('meetup','MeetupController@hello'); 
+// Route::get('meetup','MeetupController@hello'); 
 
-// Route::get('meetup','MeetupController@slack'); 
+Route::get('meetup','MeetupController@slack'); 
