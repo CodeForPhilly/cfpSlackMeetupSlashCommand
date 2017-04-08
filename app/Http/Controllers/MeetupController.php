@@ -59,18 +59,18 @@ $text = $request->input('text');
 
 $slack_token = config('services.slack.token');
 
-// $apipath = $meetup->apipath; 
+
 
 $apipath = config('services.meetup.apipath');
 
 $nextEvent = config('services.meetup.next');
-// $next = $meetup->next; 
+
 
 $currentEvent = config('services.meetup.current');
-// $current = $meetup->current;
+
 
 $accesstoken = config('services.meetup.access');
-// $accesstoken = $meetup->access;
+
 
 #
 # Check for Token from Slack
