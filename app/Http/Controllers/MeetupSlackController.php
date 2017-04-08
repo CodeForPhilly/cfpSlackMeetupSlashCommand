@@ -96,7 +96,7 @@ $placeCity = $response->body[0]->venue->city;
    "Time: ".$time);
 
 // set json header for Slack 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
 // convert theMessage to json so Slack can read it
 $jsonMessage = json_encode(array("text" => $whichMeetup, "attachments" => array($arr))); 
