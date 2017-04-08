@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class MovieController extends Controller {
+class MeetupController extends Controller {
 
 // power our movies page
 function index(){
