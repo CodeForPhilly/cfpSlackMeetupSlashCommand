@@ -46,7 +46,7 @@ return [
     'apipath' => env('API_PATH'),
     'next' => env('NEXT'),
     'current' => env('CURRENT'),
-    'access' => env('ACCESS_TOKEN');
+    'access' => env('ACCESS_TOKEN'),
 
     ],
 
