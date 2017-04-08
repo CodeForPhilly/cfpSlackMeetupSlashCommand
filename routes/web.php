@@ -17,5 +17,4 @@ Route::get('/', function () {
 
 
 
-
 Route::get('meetup','MeetupController@slack'); 

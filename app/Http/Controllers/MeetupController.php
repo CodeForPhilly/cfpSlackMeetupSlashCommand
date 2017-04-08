@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class MeetupController extends Controller {
 
@@ -23,15 +24,22 @@ class MeetupController extends Controller {
 		return view('meetup');
 	}
 	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function slack()
+	   /**
+     * 
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+	public function slack(Request $request)
 	{
 		
 	
+ 
+
+$command = $request->input('command');
+$token = $request->input('token');
+$text = $request->input('text');
+
 
 
 $command = $_POST['command'];
