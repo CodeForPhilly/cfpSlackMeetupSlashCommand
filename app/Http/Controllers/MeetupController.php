@@ -23,6 +23,13 @@ class MeetupController extends Controller {
 	{
 		return view('meetup');
 	}
+
+
+		public function hello()
+	{
+		echo "hello";
+	}
+
 	
 	   /**
      * 
