@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Config;
 
 class MeetupController extends Controller {
 
@@ -54,11 +55,22 @@ $text = $request->input('text');
 // $text = $_POST['text'];
 
 
-$slack_token = $slack->token; 
-$apipath = $meetup->apipath; 
-$next = $meetup->next; 
-$current = $meetup->current;
-$accesstoken = $meetup->access;
+// $slack_token = $slack->token; 
+
+$slack_token = Config::driver('slack')->token(); 
+
+// $apipath = $meetup->apipath; 
+
+$apipath = Config::driver('meetup')->apipath(); 
+
+$next = Config::driver('meetup')->next(); 
+// $next = $meetup->next; 
+
+$current = Config::driver('meetup')->current(); 
+// $current = $meetup->current;
+
+$accesstoken = Config::driver('meetup')->access(); 
+// $accesstoken = $meetup->access;
 
 #
 # Check for Token from Slack
