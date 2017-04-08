@@ -7,7 +7,28 @@ use App\Http\Controllers\Controller;
 class MeetupController extends Controller {
 
 
+/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
 	
+	}
+
+
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		
+	
+
 
 $command = $_POST['command'];
 $token = $_POST['token'];
@@ -119,7 +140,8 @@ $reply = $jsonMessage;
 echo $reply; 
 
 
-// return view('meetup');
-
+return view('meetup');
 
 }
+
+} // close class
