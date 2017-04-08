@@ -35,4 +35,19 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'slack' => [
+
+        'token' => env('SLACK_TOKEN'),
+
+    ],
+
+    'meetup' => [
+
+    'apipath' => env('API_PATH'),
+    'next' => env('NEXT'),
+    'current' => env('CURRENT'),
+    'access' => env('ACCESS_TOKEN');
+
+    ],
+
 ];

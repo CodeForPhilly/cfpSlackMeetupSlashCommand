@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('meetup', function () {
+    return view('MeetupController@index');
+});
