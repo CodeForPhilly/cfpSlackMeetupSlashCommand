@@ -63,10 +63,10 @@ $slack_token = config('services.slack.token');
 
 $apipath = config('services.meetup.apipath');
 
-$next = config('services.meetup.next');
+$nextEvent = config('services.meetup.next');
 // $next = $meetup->next; 
 
-$current = config('services.meetup.current');
+$currentEvent = config('services.meetup.current');
 // $current = $meetup->current;
 
 $accesstoken = config('services.meetup.access');
@@ -94,13 +94,13 @@ $whichMeetup = "Next Meetup";
 
 // api call url set in intialize.php
 // default state of the api call is the next meetup
-$uri = $apipath.$next.$accesstoken;
+$uri = $apipath.$nextEvent.$accesstoken;
 
 
 // if user type "/cfp current" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
 if(strcasecmp($text, $current) == 0)
 	{	
-	$uri = $apipath.$current.$accesstoken;
+	$uri = $apipath.$currentEvent.$accesstoken;
 	$whichMeetup = "Current Meetup";
 	}
 
