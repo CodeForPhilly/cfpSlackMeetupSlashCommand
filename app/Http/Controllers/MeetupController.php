@@ -162,7 +162,10 @@ $placeCity = $response->body[0]->venue->city;
 
 } // close else 
 
-
+return response()->json([
+    'text' => $whichMeetup,
+    'attachments' => array($arr)
+]);
 // $reply = "No reply";
 
 // $reply = $jsonMessage;
