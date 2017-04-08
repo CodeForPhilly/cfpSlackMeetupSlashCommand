@@ -47,4 +47,10 @@
         "preferred-install": "dist",
         "sort-packages": true
     }
+
+    {
+    "require": {
+        "nategood/httpful": "*"
+    }
+}
 }
