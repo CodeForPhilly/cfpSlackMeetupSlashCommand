@@ -27,8 +27,7 @@ $currentEvent = config('services.meetup.current');
 $accesstoken = config('services.meetup.access');
 	
 
-$response = \Httpful\Request::get($uri)->send();
-
+// a user can type "/cfp current" to get the current meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
 $current = "current";
 $next = "next";
 
