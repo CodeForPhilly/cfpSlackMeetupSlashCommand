@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 
 class MeetupController extends Controller {
 
-// power our movies page
-function index(){
 
 	
 
@@ -122,8 +120,6 @@ echo $reply;
 
 
 // return view('meetup');
-
-}
 
 
 }
