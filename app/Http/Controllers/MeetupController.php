@@ -69,7 +69,7 @@ $next = config('services.meetup.next');
 $current = config('services.meetup.current');
 // $current = $meetup->current;
 
-$accesstoken = = config('services.meetup.access');
+$accesstoken = config('services.meetup.access');
 // $accesstoken = $meetup->access;
 
 #
