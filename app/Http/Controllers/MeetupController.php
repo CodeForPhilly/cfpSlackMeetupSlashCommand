@@ -49,9 +49,9 @@ $text = $request->input('text');
 
 
 
-$command = $_POST['command'];
-$token = $_POST['token'];
-$text = $_POST['text'];
+// $command = $_POST['command'];
+// $token = $_POST['token'];
+// $text = $_POST['text'];
 
 
 $slack_token = $slack->token; 
