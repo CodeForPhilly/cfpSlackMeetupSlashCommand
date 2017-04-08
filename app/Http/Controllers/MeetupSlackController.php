@@ -39,7 +39,7 @@ $whichMeetup = "Next Meetup";
 // default state of the api call is the next meetup
 $uri = $apipath.$nextEvent.$accesstoken;
 
-
+$text = "current";
 // if user type "/cfp current" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
 if(strcasecmp($text, $current) == 0)
 	{	
