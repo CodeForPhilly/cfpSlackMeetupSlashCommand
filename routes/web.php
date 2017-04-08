@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('meetup', function () {
-    return view('MeetupController@index');
-});
+
+
+Route::get('meetup','MeetupController@index'); 

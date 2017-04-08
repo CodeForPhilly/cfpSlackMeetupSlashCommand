@@ -121,7 +121,7 @@ $reply = $jsonMessage;
 echo $reply; 
 
 
-return view('meetup');
+// return view('meetup');
 
 }
 
