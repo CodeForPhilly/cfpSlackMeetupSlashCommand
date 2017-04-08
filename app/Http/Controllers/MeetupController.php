@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Config;
+
 
 class MeetupController extends Controller {
 
@@ -57,19 +57,19 @@ $text = $request->input('text');
 
 // $slack_token = $slack->token; 
 
-$slack_token = Config::driver('slack')->token(); 
+$slack_token = config('services.slack.token');
 
 // $apipath = $meetup->apipath; 
 
-$apipath = Config::driver('meetup')->apipath(); 
+$apipath = config('services.meetup.apipath');
 
-$next = Config::driver('meetup')->next(); 
+$next = config('services.meetup.next');
 // $next = $meetup->next; 
 
-$current = Config::driver('meetup')->current(); 
+$current = config('services.meetup.current');
 // $current = $meetup->current;
 
-$accesstoken = Config::driver('meetup')->access(); 
+$accesstoken = = config('services.meetup.access');
 // $accesstoken = $meetup->access;
 
 #
