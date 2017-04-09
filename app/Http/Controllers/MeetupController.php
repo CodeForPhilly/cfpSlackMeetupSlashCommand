@@ -34,9 +34,9 @@ class MeetupController extends Controller {
 
 		public function posts(Request $request)
 	{
-		$command = $request->input('command');
-$token = $request->input('token');
-$text = $request->input('text');
+		$command = $request['command'];
+$token = $request['token'];
+$text = $request['text'];
 
 echo $command; 
 echo $text; 
