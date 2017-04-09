@@ -31,6 +31,19 @@ class MeetupController extends Controller {
 		echo "hello";
 	}
 
+
+
+		public function posts(Request $request)
+	{
+		$command = $request->input('command');
+$token = $request->input('token');
+$text = $request->input('text');
+
+echo $command; 
+echo $text; 
+
+	}	
+
 	
 	   /**
      * 
