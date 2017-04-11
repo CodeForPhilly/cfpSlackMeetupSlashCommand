@@ -27,8 +27,9 @@ $currentEvent = config('services.meetup.current');
 $accesstoken = config('services.meetup.access');
 	
 
-// a user can type "/cfp current" to get the current meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
+// a user can type "/cfp current" to get the current meetup and "/cfp next"  to get the next upcoming meetup so here I am setting the text for string comparison 
 $current = "current";
+$last = "last";
 $next = "next";
 
 // whichMeetup holds the text value to be passed into the json output for slack 
@@ -39,12 +40,12 @@ $whichMeetup = "Next Meetup";
 // default state of the api call is the next meetup
 $uri = $apipath.$nextEvent.$accesstoken;
 
-$text = "current";
+$text = "last";
 // if user type "/cfp current" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
-if(strcasecmp($text, $current) == 0)
+if(strcasecmp($text, $last) == 0)
 	{	
 	$uri = $apipath.$currentEvent.$accesstoken;
-	$whichMeetup = "Current Meetup";
+	$whichMeetup = "Last Meetup";
 	}
 
 
