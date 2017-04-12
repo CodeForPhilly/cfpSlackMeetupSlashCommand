@@ -27,7 +27,7 @@ $currentEvent = config('services.meetup.current');
 
 
 $accesstoken = config('services.meetup.access');
-$todayToken = config('services.meetup.today');
+$todaytoken = config('services.meetup.today');
 	
 $text = "today";
 
@@ -55,13 +55,13 @@ if(strcasecmp($text, $last) == 0)
 
 if(strcasecmp($text, $today) == 0)
   { 
-  $uri = $apipath.$todayEvent.$accesstoken;
+  $uri = $apipath.$todayEvent.$todaytoken;
   $whichMeetup = "Today's Meetup";
   }
 
 if(strcasecmp($text, $next) == 0)
   { 
-  $uri = $apipath.$nextEvent.$todayToken;
+  $uri = $apipath.$nextEvent.$accesstoken;
   $whichMeetup = "Next Meetup";
   }
 
