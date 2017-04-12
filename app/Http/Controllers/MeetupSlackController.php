@@ -12,9 +12,10 @@ class MeetupSlackController extends Controller
 		echo "hello";
 
 
+
+// These are the new env variables to copy into Meetupcontroller to get today working with key
+
 $slack_token = config('services.slack.token');
-
-
 
 $apipath = config('services.meetup.apipath');
 
@@ -28,9 +29,13 @@ $currentEvent = config('services.meetup.current');
 
 $accesstoken = config('services.meetup.apikey');
 
+// end copying env variables new
 
-	
+
+// ****** DO NOT COPY ***** //	
 $text = "today";
+// ****** DO NOT COPY ***** //
+
 
 // a user can type "/cfp last" to get the last meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
 // $current = "current";
@@ -45,6 +50,7 @@ $whichMeetup = "Next Meetup";
 // api call url set in intialize.php
 // default state of the api call is the next meetup
 $uri = $apipath.$todayEvent.$accesstoken;
+
 
 
 // if user type "/cfp last" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
