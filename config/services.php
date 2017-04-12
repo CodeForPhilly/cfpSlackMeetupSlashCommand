@@ -48,7 +48,8 @@ return [
     'current' => env('CURRENT'),
     'access' => env('ACCESS_TOKEN'),
     'apikey' => env('API_KEY'),
-
+    'today'=> env('TODAY'),
+ 
     ],
 
 ];
