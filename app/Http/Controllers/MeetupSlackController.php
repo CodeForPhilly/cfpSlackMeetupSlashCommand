@@ -29,6 +29,7 @@ $currentEvent = config('services.meetup.current');
 $accesstoken = config('services.meetup.access');
 	
 $text = "today";
+
 // a user can type "/cfp last" to get the last meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
 // $current = "current";
 $next = "next";
@@ -41,27 +42,27 @@ $whichMeetup = "Next Meetup";
 
 // api call url set in intialize.php
 // default state of the api call is the next meetup
-$uri = $apipath.$nextEvent.$accesstoken;
+$uri = $apipath.$todayEvent.$accesstoken;
 
 
 // if user type "/cfp last" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
-if(strcasecmp($text, $last) == 0)
-  { 
-  $uri = $apipath.$currentEvent.$accesstoken;
-  $whichMeetup = "Last Meetup";
-  }
+// if(strcasecmp($text, $last) == 0)
+//   { 
+//   $uri = $apipath.$currentEvent.$accesstoken;
+//   $whichMeetup = "Last Meetup";
+//   }
 
-if(strcasecmp($text, $today) == 0)
-  { 
-  $uri = $apipath.$todayEvent.$accesstoken;
-  $whichMeetup = "Today's Meetup";
-  }
+// if(strcasecmp($text, $today) == 0)
+//   { 
+//   $uri = $apipath.$todayEvent.$accesstoken;
+//   $whichMeetup = "Today's Meetup";
+//   }
 
-if(strcasecmp($text, $next) == 0)
-  { 
-  $uri = $apipath.$nextEvent.$accesstoken;
-  $whichMeetup = "Next Meetup";
-  }
+// if(strcasecmp($text, $next) == 0)
+//   { 
+//   $uri = $apipath.$nextEvent.$accesstoken;
+//   $whichMeetup = "Next Meetup";
+//   }
 
 
 
