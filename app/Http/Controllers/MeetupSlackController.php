@@ -28,7 +28,7 @@ $currentEvent = config('services.meetup.current');
 
 $accesstoken = config('services.meetup.access');
 	
-$text = "today";
+$text = "next";
 
 // a user can type "/cfp last" to get the last meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
 // $current = "current";
@@ -74,13 +74,13 @@ $response = \Httpful\Request::get($uri)->send();
 
 
 // grab the title of the event from the response
-$title = $response->body->name;
+$title = $response->body[0]->name;
 
 
 
 // grab the time of the event from the response 
-$time = $response->body->time; 
-$timeOffset = $response->body->utc_offset; // time offset in the api is a negative number
+$time = $response->body[0]->time; 
+$timeOffset = $response->body[0]->utc_offset; // time offset in the api is a negative number
 
 
 // convert the date and time to user readable format 
@@ -91,13 +91,13 @@ $time = gmdate('g a', $epoch);
 
 
 // grab the title of the place where the event is being held
-$placeTitle = $response->body->venue->name;
+$placeTitle = $response->body[0]->venue->name;
 
 //grab the street address where the event is being held
-$placeStreet = $response->body->venue->address_1;
+$placeStreet = $response->body[0]->venue->address_1;
 
 //grab the city where the event is being held 
-$placeCity = $response->body->venue->city; 
+$placeCity = $response->body[0]->venue->city; 
 
 
 
