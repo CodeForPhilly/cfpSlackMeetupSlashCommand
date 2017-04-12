@@ -46,23 +46,23 @@ $uri = $apipath.$todayEvent.$accesstoken;
 
 
 // if user type "/cfp last" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
-// if(strcasecmp($text, $last) == 0)
-//   { 
-//   $uri = $apipath.$currentEvent.$accesstoken;
-//   $whichMeetup = "Last Meetup";
-//   }
+if(strcasecmp($text, $last) == 0)
+  { 
+  $uri = $apipath.$currentEvent.$accesstoken;
+  $whichMeetup = "Last Meetup";
+  }
 
-// if(strcasecmp($text, $today) == 0)
-//   { 
-//   $uri = $apipath.$todayEvent.$accesstoken;
-//   $whichMeetup = "Today's Meetup";
-//   }
+if(strcasecmp($text, $today) == 0)
+  { 
+  $uri = $apipath.$todayEvent.$accesstoken;
+  $whichMeetup = "Today's Meetup";
+  }
 
-// if(strcasecmp($text, $next) == 0)
-//   { 
-//   $uri = $apipath.$nextEvent.$accesstoken;
-//   $whichMeetup = "Next Meetup";
-//   }
+if(strcasecmp($text, $next) == 0)
+  { 
+  $uri = $apipath.$nextEvent.$accesstoken;
+  $whichMeetup = "Next Meetup";
+  }
 
 
 
@@ -71,14 +71,16 @@ $uri = $apipath.$todayEvent.$accesstoken;
 $response = \Httpful\Request::get($uri)->send();
 
 
+
+
 // grab the title of the event from the response
-$title = $response->body[0]->name;
+$title = $response->body->name;
 
 
 
 // grab the time of the event from the response 
-$time = $response->body[0]->time; 
-$timeOffset = $response->body[0]->utc_offset; // time offset in the api is a negative number
+$time = $response->body->time; 
+$timeOffset = $response->body->utc_offset; // time offset in the api is a negative number
 
 
 // convert the date and time to user readable format 
@@ -89,13 +91,13 @@ $time = gmdate('g a', $epoch);
 
 
 // grab the title of the place where the event is being held
-$placeTitle = $response->body[0]->venue->name;
+$placeTitle = $response->body->venue->name;
 
 //grab the street address where the event is being held
-$placeStreet = $response->body[0]->venue->address_1;
+$placeStreet = $response->body->venue->address_1;
 
 //grab the city where the event is being held 
-$placeCity = $response->body[0]->venue->city; 
+$placeCity = $response->body->venue->city; 
 
 
 
