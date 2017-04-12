@@ -28,7 +28,7 @@ $currentEvent = config('services.meetup.current');
 
 $accesstoken = config('services.meetup.access');
 	
-$text = "next";
+$text = "today";
 
 // a user can type "/cfp last" to get the last meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
 // $current = "current";
@@ -70,7 +70,7 @@ if(strcasecmp($text, $next) == 0)
 // http://phphttpclient.com
 $response = \Httpful\Request::get($uri)->send();
 
-
+echo $response; 
 
 
 // grab the title of the event from the response
