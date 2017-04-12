@@ -20,17 +20,20 @@ $apipath = config('services.meetup.apipath');
 
 $nextEvent = config('services.meetup.next');
 
+$todayEvent = config('services.meetup.today');
+
 
 $currentEvent = config('services.meetup.current');
 
 
 $accesstoken = config('services.meetup.access');
 	
-
-// a user can type "/cfp current" to get the current meetup and "/cfp next"  to get the next upcoming meetup so here I am setting the text for string comparison 
-$current = "current";
-$last = "last";
+$text = "today";
+// a user can type "/cfp last" to get the last meetup and "/cfp next" to get the next upcoming meetup so here I am setting the text for string comparison 
+// $current = "current";
 $next = "next";
+$last = "last";
+$today = "today";
 
 // whichMeetup holds the text value to be passed into the json output for slack 
 // here setting the default text to "Next Meetup"
@@ -40,13 +43,26 @@ $whichMeetup = "Next Meetup";
 // default state of the api call is the next meetup
 $uri = $apipath.$nextEvent.$accesstoken;
 
-$text = "last";
-// if user type "/cfp current" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
+
+// if user type "/cfp last" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
 if(strcasecmp($text, $last) == 0)
-	{	
-	$uri = $apipath.$currentEvent.$accesstoken;
-	$whichMeetup = "Last Meetup";
-	}
+  { 
+  $uri = $apipath.$currentEvent.$accesstoken;
+  $whichMeetup = "Last Meetup";
+  }
+
+if(strcasecmp($text, $today) == 0)
+  { 
+  $uri = $apipath.$todayEvent.$accesstoken;
+  $whichMeetup = "Today's Meetup";
+  }
+
+if(strcasecmp($text, $next) == 0)
+  { 
+  $uri = $apipath.$nextEvent.$accesstoken;
+  $whichMeetup = "Next Meetup";
+  }
+
 
 
 // using httpful.phar to get and parse JSON object from API 
@@ -96,20 +112,20 @@ $placeCity = $response->body[0]->venue->city;
    ."\n". 
    "Time: ".$time);
 
-
-
-
 // set json header for Slack 
 // header('Content-Type: application/json');
 
 // convert theMessage to json so Slack can read it
 // $jsonMessage = json_encode(array("text" => $whichMeetup, "attachments" => array($arr))); 
 
+
+
+} // close else 
+
 return response()->json([
     'text' => $whichMeetup,
     'attachments' => array($arr)
 ]);
-
 
 
 // echo "JSON";
