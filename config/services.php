@@ -47,7 +47,7 @@ return [
     'next' => env('NEXT'),
     'current' => env('CURRENT'),
     'access' => env('ACCESS_TOKEN'),
-    'apikey' => env('APIKEY'),
+    'apikey' => env('API_KEY'),
 
     ],
 
