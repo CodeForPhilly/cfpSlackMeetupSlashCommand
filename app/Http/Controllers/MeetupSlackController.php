@@ -120,7 +120,7 @@ $placeCity = $response->body[0]->venue->city;
 
 
 
-} // close else 
+
 
 return response()->json([
     'text' => $whichMeetup,
