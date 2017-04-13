@@ -197,4 +197,6 @@ return response()->json([
 
 } // close else
 
+} // close function 
+
 } // close class
