@@ -34,12 +34,13 @@ class MeetupController extends Controller {
 
 		public function posts(Request $request)
 	{
-		$command = $request['command'];
-$token = $request['token'];
-$text = $request['text'];
 
-echo $command; 
-echo $text; 
+		$command = $request['command'];
+		$token = $request['token'];
+		$text = $request['text'];
+
+		echo $command; 
+		echo $text; 
 
 	}	
 
@@ -56,33 +57,28 @@ echo $text;
 	
  
 
-$command = $request->input('command');
-$token = $request->input('token');
-$text = $request->input('text');
+		$command = $request->input('command');
+		$token = $request->input('token');
+		$text = $request->input('text');
 
 
+		// slack token to authorize
+		$slack_token = config('services.slack.token');
 
-// $command = $_POST['command'];
-// $token = $_POST['token'];
-// $text = $_POST['text'];
+		//meetup api path
+		$apipath = config('services.meetup.apipath');
 
+		// api call for the next event
+		$nextEvent = config('services.meetup.next');
 
-// $slack_token = $slack->token; 
+		// api call for current event
+		$todayEvent = config('services.meetup.today');
 
-$slack_token = config('services.slack.token');
+		// api call for the last event (have to change variable name to reflect last)
+		$currentEvent = config('services.meetup.current');
 
-
-
-$apipath = config('services.meetup.apipath');
-
-$nextEvent = config('services.meetup.next');
-
-
-$currentEvent = config('services.meetup.current');
-
-
-$accesstoken = config('services.meetup.access');
-
+		// access token for the api
+		$accesstoken = config('services.meetup.apikey');
 
 #
 # Check for Token from Slack
@@ -100,6 +96,7 @@ else {
 // $current = "current";
 $next = "next";
 $last = "last";
+$today = "today";
 
 // whichMeetup holds the text value to be passed into the json output for slack 
 // here setting the default text to "Next Meetup"
@@ -107,20 +104,36 @@ $whichMeetup = "Next Meetup";
 
 // api call url set in intialize.php
 // default state of the api call is the next meetup
-$uri = $apipath.$nextEvent.$accesstoken;
+$uri = $apipath.$todayEvent.$accesstoken;
+
 
 
 // if user type "/cfp last" this sets the api call url to fetch the current meetup which is defined in the api as "recent_past" here https://www.meetup.com/meetup_api/docs/:urlname/events/#list
 if(strcasecmp($text, $last) == 0)
-	{	
-	$uri = $apipath.$currentEvent.$accesstoken;
-	$whichMeetup = "Last Meetup";
-	}
+  { 
+  $uri = $apipath.$currentEvent.$accesstoken;
+  $whichMeetup = "Last Meetup";
+  }
+
+if(strcasecmp($text, $today) == 0)
+  { 
+  $uri = $apipath.$todayEvent.$accesstoken;
+  $whichMeetup = "Today's Meetup";
+  }
+
+if(strcasecmp($text, $next) == 0)
+  { 
+  $uri = $apipath.$nextEvent.$accesstoken;
+  $whichMeetup = "Next Meetup";
+  }
+
 
 
 // using httpful.phar to get and parse JSON object from API 
 // http://phphttpclient.com
 $response = \Httpful\Request::get($uri)->send();
+
+
 
 
 // grab the title of the event from the response
@@ -173,19 +186,12 @@ $placeCity = $response->body[0]->venue->city;
 
 
 
-} // close else 
+
 
 return response()->json([
     'text' => $whichMeetup,
     'attachments' => array($arr)
 ]);
-// $reply = "No reply";
-
-// $reply = $jsonMessage;
-
-// send reply to slack 
-// echo $reply; 
-
 
 
 

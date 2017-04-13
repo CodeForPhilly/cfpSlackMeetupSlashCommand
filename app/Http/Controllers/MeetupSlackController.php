@@ -78,7 +78,7 @@ if(strcasecmp($text, $next) == 0)
 // http://phphttpclient.com
 $response = \Httpful\Request::get($uri)->send();
 
-echo $response; 
+
 
 
 // grab the title of the event from the response
@@ -143,6 +143,6 @@ return response()->json([
 
 // echo $jsonMessage;
 
-}
+} // close function 
 
 } // close class 
