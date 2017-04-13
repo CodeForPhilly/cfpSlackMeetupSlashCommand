@@ -97,6 +97,7 @@ else {
 $next = "next";
 $last = "last";
 $today = "today";
+$current = "current";
 
 // whichMeetup holds the text value to be passed into the json output for slack 
 // here setting the default text to "Next Meetup"
@@ -115,10 +116,10 @@ if(strcasecmp($text, $last) == 0)
   $whichMeetup = "Last Meetup";
   }
 
-if(strcasecmp($text, $today) == 0)
+if(strcasecmp($text, $today) == 0 || strcasecmp($text, $current) == 0)
   { 
   $uri = $apipath.$todayEvent.$accesstoken;
-  $whichMeetup = "Today's Meetup";
+  $whichMeetup = "Current Meetup";
   }
 
 if(strcasecmp($text, $next) == 0)
